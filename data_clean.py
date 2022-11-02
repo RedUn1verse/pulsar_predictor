@@ -1,11 +1,19 @@
 import csv
-import random
 
-file = open("raw_pulsar_data.csv")
-csv_reader = csv.reader(file)
-print (type(file))
+def clean(filename):
+    file = open(filename)
+    csv_reader = csv.reader(file)
+    print (type(file))
 
-rows = []
-for row in csv_reader:
-        rows.append(row)
-print (rows)
+    data = []
+    results = []
+    for row in csv_reader:
+        results.append(row.pop(-1))
+        data.append(row)
+    return [data, results]
+
+def split_data(list, quantity):
+    return_list = []
+    for i in range(0, len(list), quantity):
+        return_list.append(list[i:i + quantity])
+    return return_list
