@@ -8,8 +8,8 @@ def clean(filename):
     data = []
     results = []
     for row in csv_reader:
-        results.append(row.pop(-1))
-        data.append(row)
+        results.append(float(row.pop(-1)))
+        data.append(list(map(float, row)))
     return [data, results]
 
 def split_data(list, quantity):
